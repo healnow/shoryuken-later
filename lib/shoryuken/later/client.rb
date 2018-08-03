@@ -32,7 +32,8 @@ module Shoryuken
         end
         
         def ddb
-          @ddb ||= Aws::DynamoDB::Client.new
+          options = Shoryuken::Later.options[:aws] || {}
+          @ddb ||= Aws::DynamoDB::Client.new(options)
         end
       end
     end
