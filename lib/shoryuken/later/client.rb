@@ -32,7 +32,10 @@ module Shoryuken
         end
         
         def ddb
-          options = Shoryuken::Later.options[:aws] || {}
+          options = {
+            endpoint: ENV['AWS_DYNAMODB_ENDPOINT']
+          }.reject{|k,v| v.nil?}
+
           @ddb ||= Aws::DynamoDB::Client.new(options)
         end
       end
