@@ -18,6 +18,14 @@ module Shoryuken
           # Otherwise, the message is inserted into a DynamoDB table with the same name as the queue.
           else
             table = get_shoryuken_options['schedule_table'] || Shoryuken::Later.default_table
+            puts "========="
+            puts "========="
+            puts "========="
+            puts "Hello World"
+            puts options
+            puts "========="
+            puts "========="
+            puts "========="
             resource_id = options["resource_id"] if options["resource_id"].present?
             args = JSON.dump(body: body, options: options)
             Shoryuken::Later::Client.create_item(table, perform_at: time.to_i, shoryuken_args: args,
