@@ -29,4 +29,5 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "timers", "~> 4.0.1"
   spec.add_dependency "shoryuken", "~> 3.0"
+  spec.add_dependency "aws-sdk-dynamodb", "~> 1"
 end
