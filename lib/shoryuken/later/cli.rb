@@ -267,8 +267,8 @@ module Shoryuken
       # - From instance profile credentials
       def aws_credentials?
         from_options = Shoryuken::Later.options[:aws]
-        from_options[:access_key_id].present? && from_options[:secret_access_key].present? ||
-          ENV['AWS_ACCESS_KEY_ID'].present? && ENV['AWS_SECRET_ACCESS_KEY'].present? ||
+        !from_options[:access_key_id].nil? && !from_options[:secret_access_key].nil? ||
+          !ENV['AWS_ACCESS_KEY_ID'].nil? && !ENV['AWS_SECRET_ACCESS_KEY'].nil? ||
           Aws::InstanceProfileCredentials.new(retries: 1).set?
       end
 
